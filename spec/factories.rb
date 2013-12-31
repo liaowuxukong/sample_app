@@ -9,4 +9,11 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :micropost do 
+    contect "Lorem ipsum"
+    user
+  end
+
+
 end
