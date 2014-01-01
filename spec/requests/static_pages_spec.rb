@@ -27,9 +27,19 @@ describe "StaticPages" do
         end
       end
 
-    end #describe "for signed-in users" do
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user)}
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
 
-  end
+        it { should have_link("0 following", href: following_user_path(user))}
+        it { should have_link("1 followers", href: followers_user_path(user))}
+      end
+
+    end #describe "for signed-in users" do
+  end # describe "Home page" do 
 
   describe "Help page" do 
 
